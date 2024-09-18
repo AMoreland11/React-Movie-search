@@ -1,0 +1,46 @@
+#nav__bar{
+    display: flex;
+    padding: 2rem;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.nav{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav__logo img{
+    display: flex;
+    align-items: center;
+    width: 100px;
+    height: 100px;
+}
+
+.nav__lists{
+    padding-left: 3rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.nav__home a{
+    text-decoration: none;
+    
+    color: black;
+}
+
+
+.nav__lists .nav__sign-up,
+.nav__lists .nav__log-in{
+    font-weight: 800;
+    font-size: 1rem;
+    letter-spacing: 2px;
+}
+
+button{
+    cursor: pointer;
+    background-color: transparent;
+}

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.lordicon.com/lordicon.js"></script>
+</head>
+
+<body>
+    <section id="nav__bar">
+        <div className="nav__container">
+            <div className="row">
+                <div className="nav">
+                    <div className="nav__logo">
+                        <a href="index.html">
+                            <lord-icon className="nav__lord-icon" src="https://cdn.lordicon.com/disqayiz.json"
+                                trigger="hover">
+                            </lord-icon>
+                        </a>
+                    </div>
+                    <ul className="nav__lists">
+                        <div className="nav__home"><a href="index.html"><i className="fa-solid fa-house"></i></a>
+                        </div>
+                        <button className="nav__sign-up">Sign up</li>
+                        <button className="nav__log-in">Log in</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div className="search__container">
+        <div className="search__element">
+            <input type="text" className="search__bar" className="form__control" placeholder="Search Movie Title" id="movie__search-box" onkeyup="findMovies()" onclick = "findMovies()">
+            <div className="search__list" id="search__list">
+                <!-- <div className="search__list-item">
+                    <div className="search__item-thumbnail">
+                        <img src="./assets/medium-cover.jpg">
+                    </div>
+                    <div className="search__item-info">
+                        <h3>Guardians of the Galaxy Vol.2</h3>
+                        <p>2017</p>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </div>
+    <div className="container">
+        <div className="result__container">
+            <div className="result_grid" id="result__grid">
+                <!-- <div className="movie__poster">
+                    <img src="./assets/medium-cover.jpg" alt="movie poster">
+                </div>
+                <div className="movie__info">
+                    <h3 className="movie__title">
+                        Guardians of the Galaxy Vol. 2
+                    </h3>
+                    <ul className="movie__msc-info">
+                        <li className="year">Year: 2017</li>
+                        <li className="rated">Ratings: PG-13</li>
+                        <li className="released">Released: 05 May 2017</li>
+                    </ul>
+                    <p className="genre"><b>Genre:</b> Action, Adventure, Comedy</p>
+                    <p className="writer"><b>Writer:</b> James Gunn, Don Abnett, Andy Lanning</p>
+                    <p className="actors"><b>Actors:</b>Chris Pratt, Zoe Saldana, Dave Bautista</p>
+                    <p className="plots"><b>Plot:</b> The Guardians struggle to keep together as a team while dealing with
+                        their personal family issues, notably Star-Lord'd encounter with his father the ambitious
+                        celestial being Ego.
+                    </p>
+                    <p className="language"><b>Language:</b> English</p>
+                    <p className="awards"><i className="fa-solid fa-award"></i><b> Nominated for 1 Oscar</b></p>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</body>
+<script src="./app.js"></script>
+
+</html>
