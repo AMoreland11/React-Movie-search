@@ -1,37 +1,26 @@
 #nav__bar{
     display: flex;
-    padding: 2rem;
-    flex-direction: row;
-    justify-content: center;
     align-items: center;
-}
-.nav{
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
+    margin: 2rem;
+    max-width: 100%;
 }
 
-.nav__logo img{
-    display: flex;
-    align-items: center;
-    width: 100px;
-    height: 100px;
+.nav__container{
+    width: 100%;
 }
 
 .nav__lists{
     padding-left: 3rem;
     display: flex;
-    justify-content: space-between;
     gap: 2rem;
 }
 
-.nav__home a{
-    text-decoration: none;
-    
-    color: black;
+.nav{
+    display: flex;
+    justify-content: space-between;
+    margin: 2rem;
+    padding: 1.25rem;
 }
-
 
 .nav__lists .nav__sign-up,
 .nav__lists .nav__log-in{
@@ -43,4 +32,14 @@
 button{
     cursor: pointer;
     background-color: transparent;
+}
+
+a{
+    color: black;
+    text-decoration: none;
+}
+
+a:hover{
+    color: #fff;
+    scale: 1.1rem;
 }

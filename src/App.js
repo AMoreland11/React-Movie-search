@@ -1,8 +1,11 @@
 import { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 import Navbar from './components/Navbar';
 import Search from './components/Search';
 import SearchIcon from './assets/search.svg';
+import SignUp from './pages/SignUp';
+import Login from './pages/Login';
 
 
 function App() {
@@ -41,37 +44,45 @@ function App() {
   }, []);
         
   return (
-    <div className='app'>
-      <Navbar />
-      <div className='app__container'>
-        <h1>Movie Search</h1>
-        <div className='search'>
-          <input 
-            placeholder='"Search for movies"'
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)} 
-          />
-          <img 
-            src={SearchIcon}
-            alt='search'
-            onClick={() => searchMovies(searchTerm)}
-          />
-        </div>
-        {movies?.length > 0
-          ? (
-            <div className='container'>
-              {movies.map((movie) => ( 
-                <Search key={movie.imdbID} movie={movie} />
-              ))}
+    <Router>
+      <div className='app'>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={
+            <div className='app__container'>
+              <h1>Movie Search</h1>
+              <div className='search'>
+                <input 
+                  placeholder='"Search for movies"'
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)} 
+                />
+                <img 
+                  src={SearchIcon}
+                  alt='search'
+                  onClick={() => searchMovies(searchTerm)}
+                />
+              </div>
+              {movies?.length > 0
+                ? (
+                  <div className='container'>
+                    {movies.map((movie) => ( 
+                      <Search key={movie.imdbID} movie={movie} />
+                    ))}
+                  </div>
+                  ) : (
+                  <div className='empty'>
+                    <h2>No movies found</h2>
+                  </div>
+                )
+              }
             </div>
-            ) : (
-            <div className='empty'>
-              <h2>No movies found</h2>
-            </div>
-          )
-        }
+          } />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/login" element={<Login />} />
+        </Routes>
       </div>
-    </div>
+    </Router>
   );
 }
 export default App;
