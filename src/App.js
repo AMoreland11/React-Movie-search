@@ -1,16 +1,18 @@
 import { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import './App.css';
 import Navbar from './components/Navbar';
 import Search from './components/Search';
 import SearchIcon from './assets/search.svg';
 import SignUp from './pages/SignUp';
 import Login from './pages/Login';
+import MovieDetails from './components/MovieDetails';
 
 
 function App() {
   const [movies, setMovies] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
+  const [sortOrder, setSortOrder] = useState('A-Z');
 
 
   async function fetchMovieDetails(imdbID) {
@@ -43,6 +45,17 @@ function App() {
     searchMovies("Spiderman");
   }, []);
         
+  // Adding sort a-z
+  
+  const sortedMovies = movies.sort((a, b) => {
+    if (sortOrder === 'A-Z') {
+      return a.Title.localeCompare(b.Title);
+    } else {
+      return b.Title.localeCompare(a.Title);
+    }
+  });
+
+
   return (
     <Router>
       <div className='app'>
@@ -55,7 +68,12 @@ function App() {
                 <input 
                   placeholder='"Search for movies"'
                   value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)} 
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      searchMovies(searchTerm);
+                    }
+                  }} 
                 />
                 <img 
                   src={SearchIcon}
@@ -63,11 +81,21 @@ function App() {
                   onClick={() => searchMovies(searchTerm)}
                 />
               </div>
-              {movies?.length > 0
+              <div className='sort-buttons'>
+                <select value={sortOrder} onChange={(e) => setSortOrder(e.target.value)}>
+                  <option value="A-Z">Sort A-Z</option>
+                  <option value="Z-A">Sort Z-A</option>
+                </select>
+              </div>
+              {sortedMovies?.length > 0
                 ? (
                   <div className='container'>
-                    {movies.map((movie) => ( 
-                      <Search key={movie.imdbID} movie={movie} />
+                    {sortedMovies.map((movie) => ( 
+                      <div key={movie.imdbID}>
+                        <Link to={`/movie/${movie.imdbID}`}>
+                          <Search key={movie.imdbID} movie={movie} />
+                        </Link>
+                      </div>
                     ))}
                   </div>
                   ) : (
@@ -78,6 +106,7 @@ function App() {
               }
             </div>
           } />
+          <Route path="/movie/:imdbID" element={<MovieDetails />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
         </Routes>

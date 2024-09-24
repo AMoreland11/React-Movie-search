@@ -189,6 +189,41 @@ h1 {
   opacity: 1;
 }
 
+
+/* Sort dropdown container */
+.sort-dropdown {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+/* Style for dropdown */
+.sort-dropdown select {
+  background-color: #333;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  outline: none;
+  transition: background-color 0.3s ease;
+}
+
+/* Dropdown hover effect */
+.sort-dropdown select:hover {
+  background-color: #555;
+}
+
+/* Style for dropdown options */
+.sort-dropdown select option {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+}
+
+
+/* media responsive*/
 @media screen and (max-width: 600px) {
   .app {
     padding: 4rem 2rem;
